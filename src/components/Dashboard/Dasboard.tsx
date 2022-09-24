@@ -1,5 +1,5 @@
-import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
-import { CardDashboard } from "./CardDashboard";
+import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react';
+import { CardDashboard } from './CardDashboard';
 
 export function Dashboard() {
   return (

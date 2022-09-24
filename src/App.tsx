@@ -1,6 +1,6 @@
-import { MagnifyingGlass } from "phosphor-react";
-import { Dashboard } from "./components/Dashboard/Dasboard";
-import Header from "./components/Header";
+import { MagnifyingGlass } from 'phosphor-react';
+import { Dashboard } from './components/Dashboard/Dasboard';
+import Header from './components/Header';
 
 function App() {
   return (
