@@ -8,8 +8,6 @@ import Header from './components/Header';
 import { Pagination } from './components/Pagination';
 import { Table } from './components/Table';
 
-import { TableLines } from './TableLines';
-
 export interface ITransactions {
   description: string;
   price: number;
