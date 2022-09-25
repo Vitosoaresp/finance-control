@@ -1,11 +1,12 @@
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
-import { ITransactions } from '../App';
+import { v4 as uuidv4 } from 'uuid';
+import { ITransaction } from '../App';
 
 interface ICreateTransactionDialogProps {
-  transactions: ITransactions[];
-  setTransactions: Dispatch<SetStateAction<ITransactions[]>>;
+  transactions: ITransaction[];
+  setTransactions: Dispatch<SetStateAction<ITransaction[]>>;
 }
 
 export function CreateTransactionDialog(props: ICreateTransactionDialogProps ) {
@@ -21,7 +22,8 @@ export function CreateTransactionDialog(props: ICreateTransactionDialogProps ) {
       ...data,
       option: optionSelected,
       date: new Date(Date.now()),
-    } as ITransactions;
+      id: uuidv4(),
+    } as ITransaction;
 
     props.setTransactions([...props.transactions, newTransaction])
     alert('Nova Transação adicionada com sucesso!')
