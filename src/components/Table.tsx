@@ -1,10 +1,18 @@
-import { ITransactions } from '../App';
+import { Trash } from 'phosphor-react';
+import { Dispatch, SetStateAction } from 'react';
+import { ITransaction } from '../App';
 
 interface ITableProps {
-  transactions: ITransactions[];
+  transactions: ITransaction[];
+  setTransactions: Dispatch<SetStateAction<ITransaction[]>>;
 }
 
-export function Table({ transactions }: ITableProps) {
+export function Table({ transactions, setTransactions }: ITableProps) {
+
+  function handleRemoveTransaction(transaction: ITransaction) {
+    const newTransactions = transactions.filter(item => item.id !== transaction.id);
+    setTransactions(newTransactions);
+  }
   
   return (
     <table className='w-full'>
@@ -30,7 +38,12 @@ export function Table({ transactions }: ITableProps) {
             {Number(item.price).toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
           </td>
           <td className='w-1/5'>{item.category}</td>
-          <td className='w-auto'>{item.date.toLocaleDateString()}</td>
+          <td className='w-auto'>{new Date(item.date).toLocaleDateString()}</td>
+          <td className='w-auto pl-8 flex justify-end'>
+            <button onClick={() => handleRemoveTransaction(item)}>
+              <Trash color='#F75A68' size={24} />
+            </button>
+          </td>
         </tr>
         ))}
         
