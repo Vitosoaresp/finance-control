@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { MagnifyingGlass } from 'phosphor-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CreateTransactionDialog } from './components/CreateTransactionDialog';
 
 import { Dashboard } from './components/Dashboard/Dasboard';
@@ -8,16 +8,23 @@ import Header from './components/Header';
 import { Pagination } from './components/Pagination';
 import { Table } from './components/Table';
 
-export interface ITransactions {
+export interface ITransaction {
   description: string;
   price: number;
   category: string;
   option: 'Entrada' | 'Saída';
   date: Date;
+  id: string;
 }
 
 function App() {
-  const [transactions, setTransactions] = useState<ITransactions[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>(
+    JSON.parse(localStorage.getItem('transactions')) || [],
+  );
+
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  }, [transactions])
   
   return (
     <>
@@ -31,7 +38,7 @@ function App() {
       </Dialog.Root>
       
       <section className="relative bg-[#202024] px-32 pb-20 min-h-screen">
-        <Dashboard />
+        <Dashboard transactions={transactions} />
 
         <div className="flex justify-between gap-4 pt-24 pb-4 w-full">
           <label htmlFor="search" className="w-full">
@@ -46,6 +53,7 @@ function App() {
 
         <Table 
           transactions={transactions}
+          setTransactions={setTransactions}
         />
 
         {/* <Pagination /> */}
