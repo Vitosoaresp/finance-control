@@ -17,7 +17,7 @@ export function Dashboard(props: IDashboadProps) {
     .reduce((acc, current) => acc += Number(current.price), 0);
 
   return (
-    <div className="flex gap-8 justify-center absolute -top-20 lef-1/2 right-1/2 translate-x-1/2">
+    <div className="flex gap-8 md:justify-center pl-4 md:pl-0 lg:absolute -top-20 lg:lef-1/2 lg:right-1/2 lg:translate-x-1/2 overflow-x-auto scroll-smooth w-[85vw] md:w-full">
       <CardDashboard
         type="Entradas"
         value={incoming}

@@ -40,7 +40,7 @@ function App() {
         />
       </Dialog.Root>
       
-      <section className="relative bg-[#202024] px-32 pb-20 min-h-screen">
+      <section className="relative bg-[#202024] px-5 md:px-32 pb-20 min-h-screen">
         <Dashboard transactions={transactions} />
 
         <div className="flex justify-between gap-4 pt-24 pb-4 w-full">
