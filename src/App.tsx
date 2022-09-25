@@ -21,10 +21,13 @@ function App() {
   const [transactions, setTransactions] = useState<ITransaction[]>(
     JSON.parse(localStorage.getItem('transactions')) || [],
   );
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions])
+
+  const filteredTransactionsBySearch = transactions.filter(tr => tr.description.includes(search));
   
   return (
     <>
@@ -42,7 +45,7 @@ function App() {
 
         <div className="flex justify-between gap-4 pt-24 pb-4 w-full">
           <label htmlFor="search" className="w-full">
-            <input id="search" type="text" className="bg-black w-full p-3 rounded-md text-white" placeholder="Busque uma transação" />
+            <input id="search" onChange={(e) => setSearch(e.target.value)} type="text" className="bg-black w-full p-3 rounded-md text-white" placeholder="Busque uma transação pela sua descrição" />
           </label>
 
           <button className="flex items-center gap-3 text-emerald-500 p-3 border border-emerald-500 rounded-md bg-transparent">
@@ -52,7 +55,7 @@ function App() {
         </div>
 
         <Table 
-          transactions={transactions}
+          transactions={filteredTransactionsBySearch}
           setTransactions={setTransactions}
         />
 
