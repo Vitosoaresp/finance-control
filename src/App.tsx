@@ -18,7 +18,7 @@ export interface ITransaction {
 
 function App() {
   const [transactions, setTransactions] = useState<ITransaction[]>(
-    JSON.parse(localStorage.getItem('transactions')) || [],
+    JSON.parse(localStorage.getItem('transactions') || '') || [],
   );
   const [search, setSearch] = useState('');
 
