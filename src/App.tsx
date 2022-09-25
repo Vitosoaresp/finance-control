@@ -1,4 +1,6 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import { MagnifyingGlass } from 'phosphor-react';
+import { CreateTransactionDialog } from './components/CreateTransactionDialog';
 
 import { Dashboard } from './components/Dashboard/Dasboard';
 import Header from './components/Header';
@@ -11,7 +13,12 @@ function App() {
   
   return (
     <>
-      <Header />
+      <Dialog.Root>
+        <Header />
+
+        <CreateTransactionDialog />
+      </Dialog.Root>
+      
       <section className="relative bg-[#202024] px-32 pb-20">
         <Dashboard />
 

@@ -1,3 +1,4 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import { Money } from 'phosphor-react';
 
 export default function Header() {
@@ -9,11 +10,11 @@ export default function Header() {
           <span>Finance Control</span>
         </p>
 
-        <button
+        <Dialog.Trigger
           className="text-base font-bold py-3 px-5 bg-emerald-700 rounded hover:bg-emerald-800 transition-colors text-white"
         >
           Nova transação
-        </button>
+        </Dialog.Trigger>
       </div>
     </header>
   )
