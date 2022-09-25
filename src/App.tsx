@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { MagnifyingGlass } from 'phosphor-react';
+import { useState } from 'react';
 import { CreateTransactionDialog } from './components/CreateTransactionDialog';
 
 import { Dashboard } from './components/Dashboard/Dasboard';
@@ -9,17 +10,29 @@ import { Table } from './components/Table';
 
 import { TableLines } from './TableLines';
 
+export interface ITransactions {
+  description: string;
+  price: number;
+  category: string;
+  option: 'Entrada' | 'Saída';
+  date: Date;
+}
+
 function App() {
+  const [transactions, setTransactions] = useState<ITransactions[]>([]);
   
   return (
     <>
       <Dialog.Root>
         <Header />
 
-        <CreateTransactionDialog />
+        <CreateTransactionDialog
+          transactions={transactions}
+          setTransactions={setTransactions}
+        />
       </Dialog.Root>
       
-      <section className="relative bg-[#202024] px-32 pb-20">
+      <section className="relative bg-[#202024] px-32 pb-20 min-h-screen">
         <Dashboard />
 
         <div className="flex justify-between gap-4 pt-24 pb-4 w-full">
@@ -34,10 +47,10 @@ function App() {
         </div>
 
         <Table 
-          props={TableLines}
+          transactions={transactions}
         />
 
-        <Pagination />
+        {/* <Pagination /> */}
       </section>
     </>
   )
