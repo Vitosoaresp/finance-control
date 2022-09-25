@@ -9,7 +9,7 @@ interface ICardDashboadProps {
 export function CardDashboard(props: ICardDashboadProps) {
   return (
     <div
-      className={`${props.type === 'Total' ? 'bg-emerald-800' : 'bg-[#323238]'} flex flex-col gap-3 md:w-[352px] w-[80%] p-6 rounded-md ${props.type === 'Total' && 'border border-black'} sm:flex-none`}
+      className={`${props.type === 'Total' ? 'bg-emerald-800' : 'bg-[#323238]'} flex flex-col gap-3 w-[352px] p-6 rounded-md ${props.type === 'Total' && 'border border-black'} sm:flex-none`}
     >
 
       <div className="flex items-center w-full justify-between">
