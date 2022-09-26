@@ -33,5 +33,5 @@ Front-end:
 #### Para iniciar a aplicação
 
 ```
-  npm start
+  npm run dev
 ```
