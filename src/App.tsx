@@ -25,9 +25,9 @@ function App() {
   }, [transactions]);
 
   useEffect(() => {
-    const transactions = JSON.parse(localStorage.getItem('transactions') || '');
+    const transactions = localStorage.getItem('transactions');
     if (transactions) {
-      setTransactions(transactions);
+      setTransactions(JSON.parse(transactions));
     }
     
   }, [])
