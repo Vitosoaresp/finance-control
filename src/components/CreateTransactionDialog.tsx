@@ -3,14 +3,27 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 import { v4 as uuidv4 } from 'uuid';
 import { ITransaction } from '../App';
+import ComboboxHeadless, { ICategory } from './ComboboxHeadless';
 
 interface ICreateTransactionDialogProps {
   transactions: ITransaction[];
   setTransactions: Dispatch<SetStateAction<ITransaction[]>>;
 }
+const categories = [
+  { id: 1, name: 'Salário' },
+  { id: 2, name: 'Bônus' },
+  { id: 3, name: 'Comissão' },
+  { id: 4, name: 'Alimentação' },
+  { id: 5, name: 'Lazer' },
+  { id: 6, name: 'Transporte' },
+  { id: 7, name: 'Casa' },
+  { id: 8, name: 'Despesas Pessoais' },
+  { id: 9, name: 'Saúde' },
+  { id: 10, name: 'Outros' },
+]
 
 export function CreateTransactionDialog(props: ICreateTransactionDialogProps ) {
-
+  const [selected, setSelected] = useState<ICategory>(categories[0])
   const [optionSelected, setOptionSelected] = useState<'Entrada' | 'Saída'>('Entrada');
 
   function submitCreateTransaction(e: FormEvent) {
@@ -23,6 +36,7 @@ export function CreateTransactionDialog(props: ICreateTransactionDialogProps ) {
       option: optionSelected,
       date: new Date(Date.now()),
       id: uuidv4(),
+      category: selected.name,
     } as ITransaction;
 
     props.setTransactions([...props.transactions, newTransaction])
@@ -48,7 +62,11 @@ export function CreateTransactionDialog(props: ICreateTransactionDialogProps ) {
               <input type="text" name="price" required id="price" placeholder="Preço" className="bg-black/40 w-full p-4 rounded-md text-gray-200" />
             </label>
             <label htmlFor="category">
-              <input type="text" name="category" required id="category" placeholder="Categoria" className="bg-black/40 w-full p-4 rounded-md text-gray-200" />
+              <ComboboxHeadless
+                categories={categories}
+                selected={selected}
+                setSelected={setSelected}
+              />
             </label>
           </div>
         
