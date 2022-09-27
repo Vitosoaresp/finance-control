@@ -1,10 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CreateTransactionDialog } from './components/CreateTransactionDialog';
 
 import { Dashboard } from './components/Dashboard/Dasboard';
 import Header from './components/Header';
-import { Pagination } from './components/Pagination';
 import { Table } from './components/Table';
 
 export interface ITransaction {
