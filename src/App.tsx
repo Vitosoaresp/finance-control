@@ -20,18 +20,6 @@ function App() {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-  }, [transactions]);
-
-  useEffect(() => {
-    const transactions = localStorage.getItem('transactions');
-      if (transactions) {
-      setTransactions(JSON.parse(transactions));
-    }
-    
-  }, []);
-
   const filteredTransactionsBySearch = transactions.filter(tr => tr.description.includes(search));
   
   return (
