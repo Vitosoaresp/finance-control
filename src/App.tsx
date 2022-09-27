@@ -26,11 +26,11 @@ function App() {
 
   useEffect(() => {
     const transactions = localStorage.getItem('transactions');
-    if (transactions) {
+      if (transactions) {
       setTransactions(JSON.parse(transactions));
     }
     
-  }, [])
+  }, []);
 
   const filteredTransactionsBySearch = transactions.filter(tr => tr.description.includes(search));
   
