@@ -17,7 +17,7 @@ Front-end:
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-## Para testa-lo localmente
+## Para rodar em sua maquina
 
 > Clone o repositorio
 ```
